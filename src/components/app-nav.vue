@@ -1,24 +1,29 @@
 <template>
   <div class="nav-container">
-    <ul class="shadow" v-show="true">
-      <li>
-        <a href="#">소개</a>
-      </li>
-      <li>
-        <a href="#">사진</a>
-      </li>
-      <li>
-        <a href="#">옵션</a>
-      </li>
-    </ul>
-    <span class="down-container">
+    <transition-group name="navigation" tag="div">
+      <ul class="shadow" v-if="flag" :key="navBox">
+        <li v-for="navItem in navItems" :key="navItem">
+          <a href="#">{{navItem}}</a>
+        </li>
+      </ul>
+    </transition-group>
+
+    <span class="down-container" v-on:click="flag=!flag">
       <i class="downBtn fas fa-caret-down"></i>
     </span>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      flag: true,
+      navItems: ["소개", "사진", "옵션"],
+      navBox: "navBox",
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -43,6 +48,7 @@ export default {};
 }
 .nav-container {
   width: 100%;
+  height: 8rem;
 }
 .nav-container ul {
   width: 17rem;
@@ -63,10 +69,20 @@ export default {};
   display: block;
   width: 28px;
   margin: 0 auto;
+  cursor: pointer;
 }
 .nav-container .down-container .downBtn {
   text-align: center;
   font-size: var(--large-font-size);
   padding: var(--small-spacing);
+}
+
+.navigation-enter-active,
+.navigation-leave-active {
+  transition: all ease-in-out 1s;
+}
+.navigation-enter,
+.navigation-leave-to {
+  transform: translateY(-100px);
 }
 </style>
