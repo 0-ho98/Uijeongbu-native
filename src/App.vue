@@ -43,6 +43,7 @@ export default {
 }
 body {
   margin: 0;
+  padding: var(--small-spacing);
   box-sizing: border-box;
   font-family: "Black Han Sans", sans-serif;
   background: linear-gradient(0turn, white, #eeeeee, white);
