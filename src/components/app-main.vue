@@ -1,22 +1,22 @@
 <template>
   <main>
     <div class="photo-block">
-      <div class="photo-container" :key="slideItems[0]" v-if="show[0]">
+      <div class="photo-container" :key="slideItems[0]" v-show="show[0]">
         <img src="../assets/images/산.jpg" alt="산" />
       </div>
-      <div class="photo-container" :key="slideItems[1]" v-if="show[1]">
+      <div class="photo-container" :key="slideItems[1]" v-show="show[1]">
         <img src="../assets/images/술자리.jpg" alt="술자리" />
       </div>
-      <div class="photo-container" :key="slideItems[2]" v-if="show[2]">
+      <div class="photo-container" :key="slideItems[2]" v-show="show[2]">
         <img src="../assets/images/액자.jpg" alt="액자" />
       </div>
-      <div class="photo-container" :key="slideItems[3]" v-if="show[3]">
+      <div class="photo-container" :key="slideItems[3]" v-show="show[3]">
         <img src="../assets/images/전역사진.jpg" alt="전역사진" />
       </div>
-      <div class="photo-container" :key="slideItems[4]" v-if="show[4]">
+      <div class="photo-container" :key="slideItems[4]" v-show="show[4]">
         <img src="../assets/images/주홍현빡빡이.jpg" alt="주홍현빡빡이" />
       </div>
-      <div class="photo-container" :key="slideItems[5]" v-if="show[5]">
+      <div class="photo-container" :key="slideItems[5]" v-show="show[5]">
         <img src="../assets/images/턱걸이중.jpg" alt="턱걸이중" />
       </div>
     </div>
@@ -41,32 +41,25 @@ export default {
         "주홍현빡빡이",
         "턱걸이"
       ],
-      show: [true, false, false, false, false, false],
       orignalSlide: "산",
       currentSlide: "산",
-      show: true,
+      show: [true, false, false, false, false, false],
       num: 0
     };
   },
   methods: {
     goBackSlide() {
-      if (this.orignalSlide !== this.currentSlide) {
-        this.show[this.num] = false;
-        this.num = this.num - 1;
-        let i = this.num;
-        this.currentSlide = this.slideItems[i];
-        this.show[i] = true;
+      if (this.num > 0) {
+        this.show.splice(this.num, 1, false);
+        this.show.splice(this.num - 1, 0, true);
+        this.num--;
       }
-      return console.log("z");
     },
     nextSlide() {
-      if (this.currentSlide !== "턱걸이") {
-        this.show[this.num] = false;
-        this.num = this.num + 1;
-        let i = this.num;
-        this.currentSlide = this.slideItems[i];
-        this.show[i] = true;
-        return console.log("s");
+      if (this.num < 5) {
+        this.show.splice(this.num, 1, false);
+        this.show.splice(this.num + 1, 0, true);
+        this.num++;
       }
     }
   }
@@ -99,17 +92,17 @@ main {
   border: 1px solid black;
   height: 400px;
   border-radius: 10px;
-  width: 30rem;
+  max-width: 25rem;
   display: flex;
-  overflow-x: scroll;
   position: relative;
+  overflow: hidden;
 }
 main .photo-block {
-  width: 180rem;
+  max-width: 150rem;
   display: flex;
 }
 main .photo-container {
-  width: 30rem;
+  max-width: 25rem;
   max-height: 400px;
 }
 main .photo-container img {
