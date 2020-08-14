@@ -2,13 +2,19 @@
   <div class="nav-container">
     <transition-group name="navigation" tag="div">
       <ul class="shadow" v-if="flag" :key="navBox">
-        <li v-for="navItem in navItems" :key="navItem">
-          <a href="#">{{navItem}}</a>
+        <li>
+          <router-link to="/introduce">소개</router-link>
+        </li>
+        <li>
+          <router-link to="/images">사진</router-link>
+        </li>
+        <li>
+          <router-link to="/option">옵션</router-link>
         </li>
       </ul>
     </transition-group>
 
-    <span class="down-container" v-on:click="flag=!flag">
+    <span class="down-container" v-on:click="flag = !flag">
       <i class="downBtn fas fa-caret-down"></i>
     </span>
   </div>

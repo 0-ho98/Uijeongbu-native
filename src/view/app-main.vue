@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="photo-block">
+    <transition-group tag="div" name="slide" class="photo-block">
       <div class="photo-container" :key="slideItems[0]" v-show="show[0]">
         <img src="../assets/images/산.jpg" alt="산" />
       </div>
@@ -19,7 +19,7 @@
       <div class="photo-container" :key="slideItems[5]" v-show="show[5]">
         <img src="../assets/images/턱걸이중.jpg" alt="턱걸이중" />
       </div>
-    </div>
+    </transition-group>
     <span class="arrowBtn" id="arrowBtn1" v-on:click="goBackSlide()">
       <i class="fas fa-chevron-left"></i>
     </span>
@@ -39,12 +39,12 @@ export default {
         "액자",
         "전역사진",
         "주홍현빡빡이",
-        "턱걸이"
+        "턱걸이",
       ],
       orignalSlide: "산",
       currentSlide: "산",
       show: [true, false, false, false, false, false],
-      num: 0
+      num: 0,
     };
   },
   methods: {
@@ -61,8 +61,21 @@ export default {
         this.show.splice(this.num + 1, 0, true);
         this.num++;
       }
-    }
-  }
+    },
+  },
+  created() {
+    setInterval(() => {
+      if (this.num > -1 && this.num < 5) {
+        this.show.splice(this.num, 1, false);
+        this.show.splice(this.num + 1, 0, true);
+        this.num++;
+      } else {
+        this.show.splice(5, 1, false);
+        this.show.splice(0, 0, true);
+        this.num = 0;
+      }
+    }, 4000);
+  },
 };
 </script>
 
@@ -86,7 +99,13 @@ export default {
   --dark-main-color: #3e2723;
   --light-main-color: #d7ccc8;
 }
-
+.slide-enter-active {
+  transition: all ease 1s;
+}
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+}
 main {
   margin: var(--regular-spacing) auto;
   border: 1px solid black;
