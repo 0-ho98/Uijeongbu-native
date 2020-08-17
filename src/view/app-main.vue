@@ -33,6 +33,9 @@
 export default {
   data() {
     return {
+      //slideItems는 transition-group를 이용하기 위해 사용하는 :key에 대한 배열이다.
+      //show 배열은 사진들 중 1개를 보이게 해주고, 나머지는 안보이게 해주는 배열이다.
+      //num 변수는 현재 위치를 알려주는 변수이다. 계산할 때 사용한다.
       slideItems: [
         "산",
         "술자리",
@@ -41,13 +44,12 @@ export default {
         "주홍현빡빡이",
         "턱걸이",
       ],
-      orignalSlide: "산",
-      currentSlide: "산",
       show: [true, false, false, false, false, false],
       num: 0,
     };
   },
   methods: {
+    // 뒤로 가는 함수
     goBackSlide() {
       if (this.num > 0) {
         this.show.splice(this.num, 1, false);
@@ -55,6 +57,7 @@ export default {
         this.num--;
       }
     },
+    // 다음으로 가는 함수
     nextSlide() {
       if (this.num < 5) {
         this.show.splice(this.num, 1, false);
@@ -63,6 +66,7 @@ export default {
       }
     },
   },
+  // 자동으로 슬라이드쇼가 되게 끔 만들어주는 함수
   created() {
     setInterval(() => {
       if (this.num > -1 && this.num < 5) {
@@ -108,7 +112,7 @@ export default {
 }
 main {
   margin: var(--regular-spacing) auto;
-  border: 1px solid black;
+  border: 1.2px solid black;
   height: 400px;
   border-radius: 10px;
   max-width: 25rem;

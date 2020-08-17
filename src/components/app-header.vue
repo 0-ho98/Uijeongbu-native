@@ -1,6 +1,6 @@
 <template>
   <header>
-    <span>의정부 토박이</span>
+    <router-link to="/">의정부 토박이</router-link>
   </header>
 </template>
 
@@ -32,7 +32,13 @@ header {
   margin-top: var(--regular-spacing);
   text-align: center;
 }
-header span {
+header a {
   font-size: var(--title-font-size);
+}
+header a:link {
+  color: var(--black-color);
+}
+header a:visited {
+  color: var(--black-color);
 }
 </style>
