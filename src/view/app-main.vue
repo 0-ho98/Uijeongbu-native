@@ -2,22 +2,22 @@
   <main>
     <transition-group tag="div" name="slide" class="photo-block">
       <div class="photo-container" :key="slideItems[0]" v-show="show[0]">
-        <img src="../assets/images/산.jpg" alt="산" />
+        <img src="../assets/images/2020/산.jpg" alt="산" />
       </div>
       <div class="photo-container" :key="slideItems[1]" v-show="show[1]">
-        <img src="../assets/images/술자리.jpg" alt="술자리" />
+        <img src="../assets/images/2020/술자리.jpg" alt="술자리" />
       </div>
       <div class="photo-container" :key="slideItems[2]" v-show="show[2]">
-        <img src="../assets/images/액자.jpg" alt="액자" />
+        <img src="../assets/images/2020/액자.jpg" alt="액자" />
       </div>
       <div class="photo-container" :key="slideItems[3]" v-show="show[3]">
-        <img src="../assets/images/전역사진.jpg" alt="전역사진" />
+        <img src="../assets/images/2020/전역사진.jpg" alt="전역사진" />
       </div>
       <div class="photo-container" :key="slideItems[4]" v-show="show[4]">
-        <img src="../assets/images/주홍현빡빡이.jpg" alt="주홍현빡빡이" />
+        <img src="../assets/images/2020/주홍현빡빡이.jpg" alt="주홍현빡빡이" />
       </div>
       <div class="photo-container" :key="slideItems[5]" v-show="show[5]">
-        <img src="../assets/images/턱걸이중.jpg" alt="턱걸이중" />
+        <img src="../assets/images/2020/턱걸이중.jpg" alt="턱걸이중" />
       </div>
     </transition-group>
     <span class="arrowBtn" id="arrowBtn1" v-on:click="goBackSlide()">
