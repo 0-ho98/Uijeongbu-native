@@ -1,6 +1,6 @@
 <template>
   <header>
-    <router-link to="/">의정부 토박이</router-link>
+    <a :href="'/'">의정부 토박이</a>
   </header>
 </template>
 

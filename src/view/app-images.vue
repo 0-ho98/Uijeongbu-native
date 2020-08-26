@@ -169,7 +169,7 @@ export default {
 }
 /* 사진들 옮기게 해줄 class선택자 */
 .images-container {
-  height: 1296px;
+  max-height: 1296px;
   margin: var(--regular-spacing);
   border: 1.5px solid black;
   border-radius: 5px;

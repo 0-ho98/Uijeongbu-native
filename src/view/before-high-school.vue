@@ -4,41 +4,49 @@
       <span>고등학생 이전</span>
     </header>
     <div class="main-container">
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/20131230_161238.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121110_145516.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121110_150349.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121110_151304.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121110_151323.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121110_151339.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121110_151415.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121118_131055.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121118_135646.jpg" alt />
-      </div>
-      <div class="images-container">
-        <img src="../assets/images/beforeHighSchool/IMG_20121215_184220.jpg" alt />
+      <div class="images-container" v-for="item in images" :key="item.id" @click="showModal = true">
+        <img :src="require(`../assets/images/beforeHighSchool/${item.src}.jpg`)" alt />
+        <!-- v-bind:src="require(`경로${}.jpg`)" 이렇게 하면 반복문으로 처리가능 -->
+        <!-- 그냥 img src="`경로${}.jpg`" 안된다. -->
       </div>
     </div>
+    <modal :propsData="srcData" v-if="showModal" @close="showModal = false">
+      <h3 slot="header">custom header</h3>
+    </modal>
   </div>
 </template>
 <script>
-export default {};
+import Modal from "./modalImage.vue";
+export default {
+  data() {
+    return {
+      showModal: false,
+      images: [
+        { id: 1, src: "20131230_161238" },
+        { id: 2, src: "IMG_20121110_145516" },
+        { id: 3, src: "IMG_20121110_150349" },
+        { id: 4, src: "IMG_20121110_151304" },
+        { id: 5, src: "IMG_20121110_151323" },
+        { id: 6, src: "IMG_20121110_151339" },
+        { id: 7, src: "IMG_20121110_151415" },
+        { id: 8, src: "IMG_20121118_131055" },
+        { id: 9, src: "IMG_20121118_135646" },
+        { id: 10, src: "IMG_20121215_184220" },
+        { id: 11, src: "IMG_20130324_173742" },
+        { id: 12, src: "IMG_20130324_173804" },
+        { id: 13, src: "IMG_20130403_162508" },
+        { id: 14, src: "IMG_20121215_184708" },
+        { id: 15, src: "IMG_20121215_193742" },
+        { id: 16, src: "IMG_20121215_195537" },
+        { id: 17, src: "IMG_20121215_195620" },
+      ],
+      srcData: "20131230_161238",
+    };
+  },
+  components: {
+    modal: Modal,
+  },
+};
 </script>
 <style scoped>
 :root {
@@ -63,7 +71,7 @@ export default {};
 header {
   text-align: center;
   font-size: var(--large-font-size);
-  margin-top: var(--big-spacing);
+  margin: var(--big-spacing) 0;
 }
 .main-container {
   width: 100%;
