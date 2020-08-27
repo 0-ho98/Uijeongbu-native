@@ -4,43 +4,53 @@
       <span>고등학생 이전</span>
     </header>
     <div class="main-container">
-      <div class="images-container" v-for="item in images" :key="item.id" @click="showModal = true">
-        <img :src="require(`../assets/images/beforeHighSchool/${item.src}.jpg`)" alt />
+      <div class="images-container" v-for="item in images" :key="item.id">
+        <img
+          :src="require(`../assets/images/beforeHighSchool/${item.src}`)"
+          @click="item.showModal = true"
+          alt
+        />
         <!-- v-bind:src="require(`경로${}.jpg`)" 이렇게 하면 반복문으로 처리가능 -->
         <!-- 그냥 img src="`경로${}.jpg`" 안된다. -->
+        <modal
+          :modalData="item.src"
+          :modalPath="filePath"
+          v-if="item.showModal"
+          @close="item.showModal = false"
+        >
+          <h3 slot="header">custom header</h3>
+        </modal>
       </div>
     </div>
-    <modal :propsData="srcData" v-if="showModal" @close="showModal = false">
-      <h3 slot="header">custom header</h3>
-    </modal>
   </div>
 </template>
 <script>
 import Modal from "./modalImage.vue";
 export default {
+  //데이터를 묶어서 보내야 한다면 객체 형식의 배열로 보내는게 제일이다.
   data() {
     return {
       showModal: false,
       images: [
-        { id: 1, src: "20131230_161238" },
-        { id: 2, src: "IMG_20121110_145516" },
-        { id: 3, src: "IMG_20121110_150349" },
-        { id: 4, src: "IMG_20121110_151304" },
-        { id: 5, src: "IMG_20121110_151323" },
-        { id: 6, src: "IMG_20121110_151339" },
-        { id: 7, src: "IMG_20121110_151415" },
-        { id: 8, src: "IMG_20121118_131055" },
-        { id: 9, src: "IMG_20121118_135646" },
-        { id: 10, src: "IMG_20121215_184220" },
-        { id: 11, src: "IMG_20130324_173742" },
-        { id: 12, src: "IMG_20130324_173804" },
-        { id: 13, src: "IMG_20130403_162508" },
-        { id: 14, src: "IMG_20121215_184708" },
-        { id: 15, src: "IMG_20121215_193742" },
-        { id: 16, src: "IMG_20121215_195537" },
-        { id: 17, src: "IMG_20121215_195620" },
+        { id: 0, src: "20131230_161238.jpg", showModal: false },
+        { id: 1, src: "IMG_20121110_145516.jpg", showModal: false },
+        { id: 2, src: "IMG_20121110_150349.jpg", showModal: false },
+        { id: 3, src: "IMG_20121110_151304.jpg", showModal: false },
+        { id: 4, src: "IMG_20121110_151323.jpg", showModal: false },
+        { id: 5, src: "IMG_20121110_151339.jpg", showModal: false },
+        { id: 6, src: "IMG_20121110_151415.jpg", showModal: false },
+        { id: 7, src: "IMG_20121118_131055.jpg", showModal: false },
+        { id: 8, src: "IMG_20121118_135646.jpg", showModal: false },
+        { id: 9, src: "IMG_20121215_184220.jpg", showModal: false },
+        { id: 10, src: "IMG_20130324_173742.jpg", showModal: false },
+        { id: 11, src: "IMG_20130324_173804.jpg", showModal: false },
+        { id: 12, src: "IMG_20130403_162508.jpg", showModal: false },
+        { id: 13, src: "IMG_20121215_184708.jpg", showModal: false },
+        { id: 14, src: "IMG_20121215_193742.jpg", showModal: false },
+        { id: 15, src: "IMG_20121215_195537.jpg", showModal: false },
+        { id: 16, src: "IMG_20121215_195620.jpg", showModal: false },
       ],
-      srcData: "20131230_161238",
+      filePath: "beforeHighSchool",
     };
   },
   components: {

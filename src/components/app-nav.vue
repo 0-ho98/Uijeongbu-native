@@ -21,6 +21,7 @@
 </template>
 
 <script>
+// import { eventBus } from "../event-bus/eventBus.js"; 이벤트버스 사용하기
 export default {
   data() {
     return {
@@ -29,6 +30,11 @@ export default {
       navBox: "navBox",
     };
   },
+  // methods: {
+  //   showImagesContainer() {
+  //     eventBus.$emit("show-images", true);
+  //   },이벤트버스 사용하기
+  // },
 };
 </script>
 

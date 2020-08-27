@@ -10,7 +10,7 @@
           <div class="modal-body">
             <slot name="body">
               <div class="image-block">
-                <img :src="require(`../assets/images/beforeHighSchool/${propsData}.jpg`)" alt />
+                <img :src="require(`../assets/images/${modalPath}/${modalData}`)" alt />
               </div>
             </slot>
           </div>
@@ -29,10 +29,30 @@
 
 <script>
 export default {
-  props: ["propsData"],
+  // modalData 안에는 사진 이름이 있다.
+  props: ["modalData", "modalPath"],
 };
 </script>
 <style scoped>
+:root {
+  /* font-size */
+  --title-font-size: 45px;
+  --large-font-size: 20px;
+  --regular-font-size: 16px;
+  --small-font-size: 12px;
+
+  /* spaceing */
+  --big-spacing: 16px;
+  --regular-spacing: 12px;
+  --small-spacing: 8px;
+
+  /* color */
+  --black-color: black;
+  --white-color: white;
+  --main-color: #bcaaa4;
+  --dark-main-color: #3e2723;
+  --light-main-color: #d7ccc8;
+}
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -43,15 +63,18 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
   transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.modal-wrapper {
+/* .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
-}
+} */
 
 .modal-container {
-  width: 500px;
+  max-width: 500px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;

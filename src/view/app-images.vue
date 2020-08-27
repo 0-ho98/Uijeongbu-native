@@ -20,6 +20,15 @@
           <li class="image-box" :class="{movement2: !flag1, box3:flag1}">
             <img src="../assets/images/beforeHighSchool/IMG_20121110_151415.jpg" alt />
           </li>
+          <li class="image-box" :class="{movement3: !flag1, box4:flag1}">
+            <img src="../assets/images/beforeHighSchool/IMG_20121110_151304.jpg" alt />
+          </li>
+          <li class="image-box" :class="{movement4: !flag1, box5:flag1}">
+            <img src="../assets/images/beforeHighSchool/IMG_20121110_151323.jpg" alt />
+          </li>
+          <li class="image-box" :class="{movement5: !flag1, box6:flag1}">
+            <img src="../assets/images/beforeHighSchool/IMG_20121110_151339.jpg" alt />
+          </li>
         </ul>
       </router-link>
       <router-link to="/images/high-school">
@@ -41,9 +50,18 @@
           <li class="image-box" :class="{movement2: !flag2, box3:flag2}">
             <img src="../assets/images/highSchool/IMG_20160508_140349.jpg" alt />
           </li>
+          <li class="image-box" :class="{movement3: !flag2, box4:flag2}">
+            <img src="../assets/images/highSchool/IMG_20160508_101728.jpg" alt />
+          </li>
+          <li class="image-box" :class="{movement4: !flag2, box5:flag2}">
+            <img src="../assets/images/highSchool/IMG_20151009_125145.jpg" alt />
+          </li>
+          <li class="image-box" :class="{movement5: !flag2, box6:flag2}">
+            <img src="../assets/images/highSchool/IMG_20160508_162002.jpg" alt />
+          </li>
         </ul>
       </router-link>
-      <router-link to="/images/app2017">
+      <router-link to="/images/2017">
         <ul
           id="2017year-container"
           class="box"
@@ -64,7 +82,7 @@
           </li>
         </ul>
       </router-link>
-      <router-link to="/images/app2018">
+      <router-link to="/images/2018">
         <ul
           id="2018year-container"
           class="box"
@@ -83,9 +101,15 @@
           <li class="image-box" :class="{movement2: !flag4, box3:flag4}">
             <img src="../assets/images/2018/1519029953352.jpg" alt />
           </li>
+          <li class="image-box" :class="{movement3: !flag4, box4:flag4}">
+            <img src="../assets/images/2018/20180219_104346.jpg" alt />
+          </li>
+          <li class="image-box" :class="{movement4: !flag4, box5:flag4}">
+            <img src="../assets/images/2018/20180219_120622.jpg" alt />
+          </li>
         </ul>
       </router-link>
-      <router-link to="/images/app2019">
+      <router-link to="/images/2019">
         <ul
           id="2019year-container"
           class="box"
@@ -104,9 +128,12 @@
           <li class="image-box" :class="{movement2: !flag5, box3:flag5}">
             <img src="../assets/images/2019/20190211_210859.jpg" alt />
           </li>
+          <li class="image-box" :class="{movement3: !flag5, box4:flag5}">
+            <img src="../assets/images/2019/20190211_210859.jpg" alt />
+          </li>
         </ul>
       </router-link>
-      <router-link to="/images/app2020">
+      <router-link to="/images/2020">
         <ul
           id="2020year-container"
           class="box"
@@ -125,6 +152,15 @@
           <li class="image-box" :class="{movement2: !flag6, box3:flag6}">
             <img src="../assets/images/2020/술자리.jpg" alt />
           </li>
+          <li class="image-box" :class="{movement3: !flag6, box4:flag6}">
+            <img src="../assets/images/2020/산.jpg" alt />
+          </li>
+          <li class="image-box" :class="{movement4: !flag6, box5:flag6}">
+            <img src="../assets/images/2020/주홍현빡빡이.jpg" alt />
+          </li>
+          <li class="image-box" :class="{movement5: !flag6, box6:flag6}">
+            <img src="../assets/images/2020/턱걸이중.jpg" alt />
+          </li>
         </ul>
       </router-link>
     </div>
@@ -132,6 +168,8 @@
   </div>
 </template>
 <script>
+// import { eventBus } from "../event-bus/eventBus.js";
+// 이벤트버스 사용하기
 export default {
   data() {
     return {
@@ -145,6 +183,14 @@ export default {
       blockFlag: true,
     };
   },
+  // methods: {
+
+  //   created() {
+  //     eventBus.$on("show-images", (booleanData) => {
+  //       return (this.blockFlag = booleanData);
+  //     }); 이벤트 버스 사용하기
+  //   },
+  // },
 };
 </script>
 <style scoped>
@@ -169,8 +215,9 @@ export default {
 }
 /* 사진들 옮기게 해줄 class선택자 */
 .images-container {
+  max-width: 1100px;
   max-height: 1296px;
-  margin: var(--regular-spacing);
+  margin: var(--regular-spacing) auto;
   border: 1.5px solid black;
   border-radius: 5px;
   overflow-x: scroll;
@@ -205,6 +252,18 @@ export default {
   left: 40px;
   z-index: 80;
 }
+.images-container .box .box4 {
+  left: 60px;
+  z-index: 70;
+}
+.images-container .box .box5 {
+  left: 80px;
+  z-index: 60;
+}
+.images-container .box .box6 {
+  left: 100px;
+  z-index: 50;
+}
 .images-container .box .image-box {
   width: 150px;
   height: 150px;
@@ -220,5 +279,17 @@ export default {
 }
 .images-container .box .movement2 {
   left: 340px;
+}
+.images-container .box .movement3 {
+  left: 510px;
+}
+.images-container .box .movement4 {
+  left: 680px;
+}
+.images-container .box .movement5 {
+  left: 850px;
+}
+.images-container .box .movement6 {
+  left: 1020px;
 }
 </style>
