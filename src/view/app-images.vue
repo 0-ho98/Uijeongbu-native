@@ -168,8 +168,7 @@
   </div>
 </template>
 <script>
-// import { eventBus } from "../event-bus/eventBus.js";
-// 이벤트버스 사용하기
+import EventBus from "../EventBus";
 export default {
   data() {
     return {
@@ -183,14 +182,13 @@ export default {
       blockFlag: true,
     };
   },
-  // methods: {
 
-  //   created() {
-  //     eventBus.$on("show-images", (booleanData) => {
-  //       return (this.blockFlag = booleanData);
-  //     }); 이벤트 버스 사용하기
-  //   },
-  // },
+  created() {
+    EventBus.$on("show-images", (booleanData) => {
+      console.log(booleanData);
+      this.blockFlag = booleanData;
+    });
+  },
 };
 </script>
 <style scoped>

@@ -6,7 +6,7 @@
           <router-link to="/introduce">소개</router-link>
         </li>
         <li>
-          <router-link to="/images">사진</router-link>
+          <a :href="'/images'" v-on:click="showImagesContainer">사진</a>
         </li>
         <li>
           <router-link to="/option">옵션</router-link>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-// import { eventBus } from "../event-bus/eventBus.js"; 이벤트버스 사용하기
+import EventBus from "../EventBus";
 export default {
   data() {
     return {
@@ -30,11 +30,11 @@ export default {
       navBox: "navBox",
     };
   },
-  // methods: {
-  //   showImagesContainer() {
-  //     eventBus.$emit("show-images", true);
-  //   },이벤트버스 사용하기
-  // },
+  methods: {
+    showImagesContainer() {
+      EventBus.$emit("show-images", true);
+    },
+  },
 };
 </script>
 
